@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="GuessanumberEtape2.js"></script> 
+    <link rel="stylesheet" href="GuessanumberEtape2.css">  
+    <title>Jeu de nombre</title>
+</head>
+<body>
+
+    <p id="explication"> Bonjour et bienvenue dans <em>Devinez le nombre </em>
+        <br>
+        <br>
+        Un jeu interactif et amusant où vous jouez à deux.
+        <br>Le premier joueur choisit un nombre entre 0 et 50, et le deuxième joueur 
+        <br> doit deviner quel nombre a été choisi par le jouer numero 1.
+        <br>Le but du jeu est simple : deviner le nombre en un minimum d'essais !
+        <br> </p>
+    <button id="start-btn">Start</button>
+
+<div id="jouer1">   
+    <h1> Joueur 1 </h1>
+    <input type="number" id="userNumber" placeholder="Entrez un nombre" min="0" max="50">
+    <button id="checkButton">Envoyer !</button>
+    <p id="message"> </p>   
+</div>
+
+<div id="jouer2">   
+    <h1> Joueur 2 </h1>
+    <input type="number" id="userNumber2" placeholder="Entrez un nombre" min="0" max="50">
+    <button id="checkButton2">Vérifier</button>
+    <p id="message2"> </p>   
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <!-- esto es un link que llama una animacion en github para hacer confetti  -->
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+li {
+    list-style-type: circle, black;
+  }
+
+
+img {
+    width: 250Px;
+    align-items: center;
+    border-radius: 100%;
+    border : 5px solid hotpink
+  }
+
+
+  body {
+    color: hotpink;
+    background-color: pink;
+    font-family: Comic sans MS;
+    text-align: center;
+  }
+
+ 

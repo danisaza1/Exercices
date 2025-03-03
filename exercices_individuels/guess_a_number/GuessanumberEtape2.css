@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Young+Serif&display=swap');
+
+body {
+    font-family:  "Young Serif", serif;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+#explication {
+    text-align: center;
+    font-size: x-large;
+    margin-top: 6%;
+}
+
+#start-btn {
+    margin-left: 37%;
+    margin-top: 76px;
+    width: 25%;
+    border-color: blueviolet;
+    background-color:#ffe5ff;
+    padding: 2%;
+    font-family: "Young Serif", serif;
+    font-size: 44px;
+    font-weight: bold;
+    color:blueviolet;
+}
+
+h1 {
+    text-align: center;
+    font-size: 4rem;
+    color:blueviolet; 
+    margin-top: 16%;  
+    margin-right: 4%;
+}
+
+#jouer1 {
+    display: none;  
+    /* display none hace que el elemento no se muestre en la pagina */
+}
+
+#checkButton {
+    font-family:  "Young Serif", serif;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+#userNumber {
+    margin-left: 33%;
+    font-size: 2rem;
+    text-align: center;
+    font-family:  "Young Serif", serif;
+    width: 330px; 
+    height: 40px; 
+}
+
+#message {
+    text-align: center;
+    font-size: 2rem;
+}
+
+#jouer2 {
+    display: none;  
+    /* display none hace que el elemento no se uestre en la pagina */
+}
+
+
+#checkButton2 {
+    font-family:  "Young Serif", serif;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+#userNumber2 {
+    margin-left: 33%;
+    font-size: 2rem;
+    text-align: center;
+    font-family:  "Young Serif", serif;
+    width: 330px; 
+    height: 40px; 
+}
+
+#message2 {
+    text-align: center;
+    font-size: 2rem; 
+}
+

@@ -1,0 +1,30 @@
+.label-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    grid-template-rows: auto auto; /* Dos filas: una para los emojis y otra para los emojiM */
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+/* Posicionar emoji1 en la primera columna */
+#emoji1 {
+    grid-column: 1;
+    grid-row: 1;  /* En la primera fila */
+}
+
+/* Posicionar emojiM1 justo debajo de emoji1 */
+.emojiM1 {
+    grid-column: 1; /* Misma columna que emoji1 */
+    grid-row: 2;    /* En la segunda fila */
+}
+
+/* Posicionar emoji2 en la segunda columna */
+#emoji2 {
+    grid-column: 2; /* Segunda columna */
+    grid-row: 2;    /* En la primera fila */
+}
+
+/* Posicionar emojiM2 justo debajo de emoji2 */
+.emojiM2 {
+    grid-column: 2; /* Misma columna que emoji2 */
+    grid-row: 2;    /* En la segunda fila */
+}

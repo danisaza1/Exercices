@@ -4,28 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="script.js"></script>
-    <title>Jeu des allumettes</title>
-
+    <title>Jeu d'emoji!</title>
 </head>
 <body>
 <h1>Jeu d'emoji!</h1>
-    <p>
-        Au départ, il y a un tas de 50 emojis.Chacun à son tour, les deux joueurs ôtent 
-        obligatoirement entre 1 et 6 emojis. Celui qui ôte le dernière emoji gagne.
+<p>
+    D'abord vous devez choisir un emoji, ou il aura 50 en total. Puis, chacun à son tour, les deux joueurs ôtent 
+    obligatoirement entre 1 et 6 emojis. Celui qui ôte le dernier emoji gagne!
+</p>
+<hr>
+<!-- Selección de emojis -->
+<div class="label-container">
+<label for="emoji1">Joueur 1, choisissez votre emoji :</label>
+<select id="emoji1">
+    <option value="👽​">👽​</option>
+    <option value="💥​">💥​</option>
+    <option value="😍">😍</option>
+    <option value="💩​">💩​</option>
+    <option value="🌸">🌸</option>
+</select>
+<!-- emoji a mostrar -->
+<div class="emojiM1" id="emojiM1" style="display: none"></div>
 
-    </p>
+<label for="emoji2">Joueur 2, choisissez votre emoji :</label>
+<select id="emoji2">
+    <option value="🧟‍♀️">🧟‍♀️</option>
+    <option value="🧑‍🦯​">🧑‍🦯​</option>
+    <option value="🐼​">🐼​</option>
+    <option value="🍭​">🍭​</option>
+    <option value="😜">😜</option>
+</select>
+<!-- emoji a mostrar -->
+<div class="emojiM2" id="emojiM2" style="display: none"></div>
+</div>
 
-    <label for="jugador1"> Joueur 1 :</label><br>
-    <input type="text" id="jugador1" name="jugador2"><br>
-    <button  id="buton"> Envoyer </button>
-    <br>
-    <br>
-    <label for="jugador2"> Joueur 2 :</label><br>
-    <input type="text" id="jugador2" name="jugador2"><br>
-    <button id="buton"> Envoyer </button>
+<hr>
+<!-- Entrada de texto para los jugadores -->
+<label for="jugador1">Joueur 1 :</label><br>
+<input type="text" id="jugador1" name="jugador1"><br>
+<button id="buton1">Envoyer</button><br>
 
-    <div class="phrase" id ="phrase" style = 'display: none'></div>
+<br>
 
-    
+<label for="jugador2">Joueur 2 :</label><br>
+<input type="text" id="jugador2" name="jugador2"><br>
+<button id="buton2">Envoyer</button>
+
+<!-- Mensajes a mostrar -->
+<div class="phrase" id="phrase" style="display: none"></div>
+
 </body>
 </html>

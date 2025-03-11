@@ -1,4 +1,6 @@
 
+
+
 async function fetchOffers() {
         const reponse = await fetch ('https://www.codepassport.dev/api/offers'); 
         const offers = await reponse.json();
@@ -34,9 +36,11 @@ async function fetchOffers() {
 
     document.querySelector("#myTable tbody").appendChild(tr);
     }
+    const desparecer = document.getElementById('loader')
+    desparecer.style.display = 'none';
     }
     
-    fetchOffers()
+fetchOffers();
        
     
     

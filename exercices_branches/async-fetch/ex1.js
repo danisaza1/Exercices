@@ -25,6 +25,14 @@
 
 
 
+
+
+
+
+
+
+
+
 async function fetchOffers() {
 // Récupérer les données de l'API
     const reponse = await fetch ('https://www.codepassport.dev/api/offers'); 

@@ -32,6 +32,8 @@ const latinToMorse =  {
     // por eso no puedo utilizar split 
 };
 
+
+
 const morseToLatin = {
     '-': "T",
     '--': "M",
@@ -63,11 +65,52 @@ const morseToLatin = {
   }
 
 
+// let codigo va mostrar la letra en el emplacement: 
+function getLatinCharacterList() {
+    let chaine = "hello, world"; // chaîne de caractères
+    const separator = chaine.split(""); // divise la chaîne en un tableau de caractères
+    let codigo = separator[9];
+    console.log(codigo); // affiche le tableau con las palabras split
+}
+ getLatinCharacterList(); 
+// siempre debo de llamar una funcion aun asi si 
+// lo hago en console log porque sino no se va afficher
 
-let CapturarLatin = document.getElementById('latin');
 
+
+
+// function para cambiar de latin a morse pero soy yo la que pone la letra en changement
+function  translateLatinCharacter () {
+    let latin = Object.keys(latinToMorse); // obtiene las claves,aqui latin 
+    let morse = Object.values(latinToMorse); // obtiene los valores, aqui morse
+    let changement = 'a';  //aqui pongo la letra que quiero cambiar en latin a morse
+    let morsecodigo =  latinToMorse [changement.toUpperCase()];
+    //variable = objeto [ aqui ponemos changemnet /ce que je veux changer/]
+    //toUpperCase cambia la letra a mayuscula
+    console.log(morsecodigo); 
+}
+translateLatinCharacter ()
+
+
+//function para cambiar de latin a morse PERO map es avanzado
 function encode () {
-    let palabra = CapturarLatin.value;
+    let palabra = "hello world";
+    const separar = palabra.split('');
+    let convertir = separar.map (function (letra) { 
+        // map va a buscar cada letra en los objetos para ver si corresponde
+        //letra equivale al nuevo nombre que le damos a 
+        // cada letra de palabra, aqui hello world, osea h: letra, e:letra. 
+        return latinToMorse[letra.toUpperCase()];
+    })
+    console.log(convertir);
+}
+encode();
+
+
+
+//function para cambiar de latin a morse
+function encode () {
+    let palabra = "hello world";
     const separar = palabra.split('');
     // Usamos un bucle for clásico para iterar sobre cada letra de 'separar'
     for (let i = 0; i < separar.length; i++) {
@@ -75,28 +118,24 @@ function encode () {
         let letra = separar[i];
 
         // Aquí puedes usar latinToMorse para convertir la letra a su representación en Morse
-        let morse = latinToMorse[letra.toUpperCase()];  
-        const mostrar = document.createElement("p");
-        mostrar.textContent = morse;   // Mostramos el código Morse correspondiente a cada letra
-        document.querySelector('body').appendChild(mostrar)
+        let morse = latinToMorse[letra.toUpperCase()];
+        console.log(morse);  // Mostramos el código Morse correspondiente a cada letra
     }
 }
 
-
-// Evento para latin a morse
-CapturarLatin.addEventListener("change", () => {
-    Capturar.style.display = 'inline-block';
-    encode(); // Llamar a la función para actualizar 
-});
+encode()
 
 
 
-let CapturarMorse = document.getElementById('morse');
 
+//functio para cambiar de morse a latin
 function decode () {
     //aqui tenemos un tableau y solo tiene 1! chaine de caracteres 
-    const palabraMorse = CapturarMorse.value.trim();// trim para quitar espacios innecesarios
-    let separarMose = palabraMorse.split('/');
+    const palabraMorse = ["...././.-../.-../---/ /.--/---/.-./.-../-.."];
+        // On accède au premier (et unique) élément du tableau et on le sépare en un tableau de symboles Morse,
+        //como es un chaine de caracteres, los devidimos con / por eso split/
+        // paso de "....../...."  => "...,  ._, ..,"
+    let separarMose = palabraMorse[0].split('/');
      // On parcourt chaque lettre Morse et on la traduit
      let decodedMessage = '';
     // Usamos un bucle for clásico para iterar sobre cada letra de 'separar'
@@ -111,15 +150,6 @@ function decode () {
             decodedMessage += '?';  // Si la lettre Morse n'est pas trouvée, on ajoute un point d'interrogation
         }
     }
-    const mostrar = document.createElement("p");
-    mostrar.textContent = decodedMessage;   // Mostramos el código Morse correspondiente a cada letra
-    document.querySelector('body').appendChild(mostrar)
-   
+    console.log(decodedMessage);  // Mostramos el código latin correspondiente a cada letra
 }
-
-
-// Evento para latin a morse
-CapturarMorse.addEventListener("change", () => {
-    CapturarMorse.style.display = 'inline-block';
-    decode(); // Llamar a la función para actualizar 
-});
+decode()

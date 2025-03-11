@@ -110,4 +110,3 @@ function retirerEmojis(numero) {
     }
 }
 
-// button.addEventListener('click', checkerNumero)

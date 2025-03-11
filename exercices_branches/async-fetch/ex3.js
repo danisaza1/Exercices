@@ -21,6 +21,8 @@ fetch('https://dummyjson.com/image/400x200/282828?fontFamily=pacifico&text=Hola+
 
 //manera actualizada de hacer una function de fetch
 async function afficheImage() {
+
+    
         const reponse = await fetch ('https://dummyjson.com/image/600x200/282828?fontFamily=pacifico&text=Hola+como+estas+!?+segunda+persona'); 
         const offers = await reponse.blob();
         const mostrar = document.createElement("div"); // Crea un div

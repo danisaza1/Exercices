@@ -68,7 +68,7 @@ function isValidDate(confirmarDate) {
 
   // Concatenamos el día, mes y año para verificar si la fecha es un palíndromo
   const fechaConcatenada = corresponde[1] + corresponde[2] + corresponde[3];
-  // convertidos el dia en un tableau para poderlo hacer lo siguiente en fechaReversa
+  //es lo mismo que capturar dia, mes y año
   const fechaReversa = fechaConcatenada.split('').reverse().join('');
   // split divide una string en un tableau.lo utilizamos para poder ver si es un palindrome
   // reverse voltea el tableau 

@@ -11,12 +11,15 @@ console.log(data.length)
 console.log(data[4])
 
 let inicio = 0;
-const addictionAge = 
 data.forEach(item => {
     inicio += item.age;
 })
+console.log(inicio)
 
 const moyenAge = inicio 
 const moyenLong = data.length
 const resultat = moyenAge / moyenLong 
 console.log(resultat)
+
+
+

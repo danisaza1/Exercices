@@ -81,7 +81,7 @@ UPDATE edusign SET user_id = '4' WHERE id = 2;
 UPDATE edusign SET user_id = '8' WHERE id = 3;
 UPDATE edusign SET user_id = '1' WHERE id = 4;
 UPDATE edusign SET user_id = '3' WHERE id = 5;
-UPDATE edusign SET user_id = '5' WHERE id = 6;
+UPDATE edusign SET user_id = '5' WHERE id = 6;  
 UPDATE edusign SET user_id = '6' WHERE id = 7;
 UPDATE edusign SET user_id = '7' WHERE id = 8;     -- aqui puse otra columna users id para hacer el proximo ejercicio
 SELECT * from edusign order by user_id ASC  --aqui podemos verlos de manera ascendiente.

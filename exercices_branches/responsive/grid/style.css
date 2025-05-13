@@ -1,0 +1,66 @@
+@import url('<https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap>');
+
+body {
+  margin: auto;
+  font-family: "Instrument Serif", serif;
+  letter-spacing: 0.5rem;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+img {
+  margin: 0.2rem;
+}
+
+main {
+    width: 60vw;
+    margin: 1rem auto;
+    display: grid;
+    grid-template-rows: repeat(4, minmax(100px,1fr));
+    grid-template-columns: repeat(4, minmax(100px,1fr));
+    justify-content: center;
+    gap: 10px;
+}
+
+.item-1{
+  grid-area: 1 / 1 / 2 / 5;
+  background-color: aquamarine;
+}
+.item-2{
+  grid-area: 2 / 1 / 5 / 3;
+  background-color: royalblue;
+}
+.item-3{
+  grid-area: 2 / 3 / 3 / 5;
+  background-color: rebeccapurple;
+}
+.item-4{
+  grid-area: 3 / 3 / 4 / 4;
+  background-color: hotpink;
+}
+.item-5{
+   grid-area: 3 / 4 / 4 / 5;
+  background-color: darkcyan;
+}
+.item-6{
+   grid-area: 4 / 3 / 5 / 4;
+  background-color: darkblue;
+}
+.item-7{
+   grid-area: 4 / 4 / 5 / 5;
+  background-color: yellowgreen;
+}

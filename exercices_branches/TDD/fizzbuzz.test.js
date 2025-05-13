@@ -1,6 +1,6 @@
+import { expect, test } from 'vitest';
 import { fizzbuzz  } from './fizzbuzz';
 
-const { fizzbuzz } = require('./fizzbuzz')
 
 test('Cas de démarrage #1', () => {
   expect(fizzbuzz(1)).toBe(1)
@@ -24,4 +24,8 @@ test('Cas de démarrage #5', () => {
 
 test('Cas de démarrage #6', () => {
   expect(fizzbuzz(6)).toBe("Fizz")
+})
+
+test('Cas de fizzbuzz #15', () => {
+  expect(fizzbuzz(15)).toBe("FizzBuzz")
 })

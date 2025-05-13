@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { expect, it, describe } from 'vitest';
 import { sayHello, esTuMajeur } from '../TDD/bonjour';
 
 describe('sayHello', () => {

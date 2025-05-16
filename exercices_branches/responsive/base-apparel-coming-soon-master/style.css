@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+:root {
+  --primary-color: hsl(0, 36%, 70%);
+  --secondary-color: hsl(0, 93%, 68%);
+  --third-color: hsl(0, 6%, 24%);
+  --font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.all {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .all {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .text {
+    padding: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    margin-top: 20px;
+    font-size: 36px;
+  }
+
+  .email-input {
+    align-self: center;
+  }
+}
+
+.image-container {
+  background-image: url('/images/hero-desktop.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.text {
+  align-items: flex-start;
+  padding: 60px;
+  padding-left: 120px;
+  padding-right: 200px;
+  font-family: var(--font-family);
+  background-image: url('/images/bg-pattern-desktop.svg'),
+    linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%)),
+    linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  font-size: 50px;
+  margin-top: 30%;
+  font-family: var(--font-family);
+}
+
+.first-half {
+  color: var(--primary-color);
+  font-weight: 80;
+}
+
+.second-half {
+  color: var(--third-color);
+  letter-spacing: 10px;
+}
+
+p {
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 22px;
+  word-spacing: 1rem;
+}
+
+.input-wrapper {
+  display: flex; 
+  align-items: center; 
+}
+
+.input-container {
+  display: flex; 
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid var(--primary-color);
+  width: 100%;
+  flex-grow: 1;
+}
+
+.email-input {
+  flex-grow: 1; 
+  padding: 12px 20px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-family: var(--font-family);
+  border-radius: 30px 0 0 30px;
+  background-color: transparent;
+}
+
+.email-input::placeholder {
+  color: var(--primary-color);
+  font-family: var(--font-family);
+}
+
+.submit-button {
+  background: linear-gradient(
+    to right,
+    hsl(0, 87%, 78%) 0%,
+    hsl(0, 87%, 78%) 30%,
+    hsl(0, 87%, 78%) 50%,
+    hsl(0, 93%, 68%) 100%
+  );
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px; 
+  width: 70px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  margin-left: -30px; 
+}
+
+.submit-button:hover {
+  background: linear-gradient(135deg, hsl(0, 87%, 90%), hsl(0, 60%, 90%));
+}
+
+.arrow-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.button {
+  display: none;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  display: none;
+}
+
+.error-icon {
+  height: 20px;
+  padding-right: 45px;
+}

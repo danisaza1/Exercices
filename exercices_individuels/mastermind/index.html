@@ -13,16 +13,14 @@
     <p>Enter a combination of 4 colors separated by a comma.</p>
     <input id="secret-box" type="text" placeholder="Ex: blue,red,yellow,green">
     <button onclick="set_secret()">Set Secret Code</button>
-    <p id="output"></p>
     </div>
 
     <!-- Codebreaker -->
     <div id="codebreaker-area" style="display:none;">
         <p>Codebreaker: Try to guess the combination</p>
         <input id="input-box" type="text" placeholder="Ex: blue,red,yellow,green">
-    <button onclick="verificar_click()">Submit Guess</button>
+<button id="submit-button">Submit Guess</button>
     </div>
-
     <p id="output"></p>
 
     <!-- Brython scripts -->
@@ -41,20 +39,25 @@
                     document["output"].text = 'Choose a valid color from this list: {allowed_colors}'
                     return False
 
-            alert('Secret code set! Let the game begin!')
             return True
+
 
         secret_code = []
         def set_secret(event=None):
             global secret_code
             user_input = document["secret-box"].value
             propose = [color.strip() for color in user_input.split(",")]
+            
+            alert('Secret code set! Let the game begin!')
+            
             if only_four_colors(propose):
                 secret_code = propose
                 document["codemaker-area"].style.display = "none"
                 document["codebreaker-area"].style.display = "block"
             else:
                 document["output"].text += " Try again."
+            
+            
 
 
         def good_combinaison(propose, secret_color):
@@ -65,7 +68,6 @@
         max_tries = 12   
 
         def verificar_click(event):
-            alert("¡Dentro de verificar_click!")
             global tries
             user_input = document["input-box"].value
             propose = [color.strip() for color in user_input.split(",")]
@@ -74,10 +76,6 @@
                 document["output"].text = "Colores inválidos. Usa solo colores válidos y asegúrate de que sean 4."
                 return 
 
-            alert(f"Tipo de propose: {type(propose)}, Valor de propose: {propose}")
-            alert(f"Tipo de secret_code: {type(secret_code)}, Valor de secret_code: {secret_code}")
-
-              
             tries += 1
 
             if good_combinaison(propose, secret_code):
@@ -92,13 +90,12 @@
         window.set_secret = set_secret
         window.verificar_click = verificar_click
 
-        document["submit-guess-button"] = document.select_one('button:contains("Submit Guess")')
-        document["submit-guess-button"].bind("click", verificar_click)
+        document["submit-button"].bind("click", verificar_click)
+
 
         document["secret-box"].bind("keypress", lambda e: set_secret(e) if e.keyCode == 13 else None)
         document["input-box"].bind("keypress", lambda e: verificar_click(e) if e.keyCode == 13 else None)
 
-        alert("¡Script Python completado!")
     </script>
 
     <!-- Brython engine -->

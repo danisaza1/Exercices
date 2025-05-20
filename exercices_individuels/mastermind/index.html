@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mastermind avec Python (con Brython)</title>
+</head>
+<body onload="brython()">
+    <h1>Mastermind - Codemaker vs Codebreaker</h1>
+
+
+     <!-- Codemaker  -->
+    <div id="codemaker-area">
+    <p>Enter a combination of 4 colors separated by a comma.</p>
+    <input id="secret-box" type="text" placeholder="Ex: blue,red,yellow,green">
+    <button onclick="set_secret()">Set Secret Code</button>
+    <p id="output"></p>
+    </div>
+
+    <!-- Codebreaker -->
+    <div id="codebreaker-area" style="display:none;">
+        <p>Codebreaker: Try to guess the combination</p>
+        <input id="input-box" type="text" placeholder="Ex: blue,red,yellow,green">
+    <button onclick="verificar_click()">Submit Guess</button>
+    </div>
+
+    <p id="output"></p>
+
+    <!-- Brython scripts -->
+    <script type="text/python">
+        from browser import document, alert, window
+
+        def only_four_colors(propose):
+            allowed_colors = ['blue', 'red', 'yellow', 'green', 'purple', 'orange', 'black', 'white']
+    
+            if len(propose) < 4:
+                document["output"].text = f"Please choose 4 colors from this list: {allowed_colors}"
+                return False
+                
+            for color in propose:
+                if color not in allowed_colors:
+                    document["output"].text = 'Choose a valid color from this list: {allowed_colors}'
+                    return False
+
+            alert('Secret code set! Let the game begin!')
+            return True
+
+        secret_code = []
+        def set_secret(event=None):
+            global secret_code
+            user_input = document["secret-box"].value
+            propose = [color.strip() for color in user_input.split(",")]
+            if only_four_colors(propose):
+                secret_code = propose
+                document["codemaker-area"].style.display = "none"
+                document["codebreaker-area"].style.display = "block"
+            else:
+                document["output"].text += " Try again."
+
+
+        def good_combinaison(propose, secret_color):
+            return propose == secret_color
+
+
+        tries = 0
+        max_tries = 12   
+
+        def verificar_click(event):
+            alert("¡Dentro de verificar_click!")
+            global tries
+            user_input = document["input-box"].value
+            propose = [color.strip() for color in user_input.split(",")]
+            
+            if not only_four_colors(propose):
+                document["output"].text = "Colores inválidos. Usa solo colores válidos y asegúrate de que sean 4."
+                return 
+
+            alert(f"Tipo de propose: {type(propose)}, Valor de propose: {propose}")
+            alert(f"Tipo de secret_code: {type(secret_code)}, Valor de secret_code: {secret_code}")
+
+              
+            tries += 1
+
+            if good_combinaison(propose, secret_code):
+                document["output"].text = f"You won in {tries} tries! The code was: {', '.join(secret_code)}"
+                document["codebreaker-area"].style.display = "none"
+            elif tries >= max_tries:
+                document["output"].text = f"You lost! The code was: {', '.join(secret_code)}"
+                document["codebreaker-area"].style.display = "none"
+            else:
+                document["output"].text = f"Attempt {tries}/{max_tries}. Try again."
+
+        window.set_secret = set_secret
+        window.verificar_click = verificar_click
+
+        document["submit-guess-button"] = document.select_one('button:contains("Submit Guess")')
+        document["submit-guess-button"].bind("click", verificar_click)
+
+        document["secret-box"].bind("keypress", lambda e: set_secret(e) if e.keyCode == 13 else None)
+        document["input-box"].bind("keypress", lambda e: verificar_click(e) if e.keyCode == 13 else None)
+
+        alert("¡Script Python completado!")
+    </script>
+
+    <!-- Brython engine -->
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.11.0/brython.min.js"></script>
+</body>
+</html>

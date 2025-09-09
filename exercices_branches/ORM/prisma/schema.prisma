@@ -1,0 +1,99 @@
+
+
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Table des plats (dishes)
+model Dish {
+  id          BigInt      @id @default(autoincrement())
+  name        String      @unique
+  description String
+  ingredients String
+  createdAt   DateTime    @map("created_at") @default(now()) @db.Timestamptz()
+  updatedAt   DateTime    @map("updated_at") @default(now()) @updatedAt @db.Timestamptz()
+
+  // Relación con CommandDish (muchos a muchos a través de la tabla de unión)
+  commandDishes CommandDish[]
+  // Relación con MenuDish (muchos a muchos a través de la tabla de unión)
+  menuDishes    MenuDish[]
+
+  @@map("dishes") // Mapea el nombre del modelo al nombre de la tabla SQL
+}
+
+// Table des menus
+model Menu {
+  id          BigInt      @id @default(autoincrement())
+  name        String      @db.VarChar(255)
+  description String?     // TEXT puede ser nulo, por eso se usa String?
+  createdAt   DateTime    @map("created_at") @default(now()) @db.Timestamptz()
+  updatedAt   DateTime    @map("updated_at") @default(now()) @updatedAt @db.Timestamptz()
+
+  // Relación con MenuDish (muchos a muchos a través de la tabla de unión)
+  menuDishes    MenuDish[]
+
+  @@map("menus") // Mapea el nombre del modelo al nombre de la tabla SQL
+}
+
+// Table de liaison menus ↔ plats (un menu contient plusieurs plats)
+// Esta es la tabla de unión explícita para la relación muchos a muchos entre Menu y Dish
+model MenuDish {
+  menuId BigInt @map("menu_id")
+  dishId BigInt @map("dish_id")
+
+  menu   Menu @relation(fields: [menuId], references: [id], onDelete: Cascade)
+  dish   Dish @relation(fields: [dishId], references: [id], onDelete: Cascade)
+
+  @@id([menuId, dishId]) // Clave primaria compuesta
+  @@map("menu_dishes") // Mapea el nombre del modelo al nombre de la tabla SQL
+}
+
+// Table des utilisateurs (users)
+model User {
+  id        BigInt    @id @default(autoincrement())
+  firstname String
+  lastname  String
+  address   String?   // TEXT puede ser nulo
+  zipcode   String    @db.VarChar(20)
+  email     String    @unique
+  createdAt DateTime  @map("created_at") @default(now()) @db.Timestamptz()
+  updatedAt DateTime  @map("updated_at") @default(now()) @updatedAt @db.Timestamptz()
+
+  commands  Command[] // Un usuario puede tener muchas Commandas
+
+  @@map("users") // Mapea el nombre del modelo al nombre de la tabla SQL
+}
+
+// Table des commandes : 1 ligne = 1 commande globale
+model Command {
+  id        BigInt    @id @default(autoincrement())
+  userId    BigInt    @map("user_id")
+  createdAt DateTime  @map("created_at") @default(now()) @db.Timestamptz()
+  updatedAt DateTime  @map("updated_at") @default(now()) @updatedAt @db.Timestamptz()
+
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  commandDishes CommandDish[] // Una Command puede tener muchos CommandDish
+
+  @@map("commands") // Mapea el nombre del modelo al nombre de la tabla SQL
+}
+
+// Table des plats commandés : 1 ligne = 1 plat dans une commande
+// Esta es la tabla de unión explícita para la relación muchos a muchos entre Command y Dish
+model CommandDish {
+  commandId BigInt @map("command_id")
+  dishId    BigInt @map("dish_id")
+  quantity  Int    @default(1)
+
+  command   Command @relation(fields: [commandId], references: [id], onDelete: Cascade)
+  dish      Dish    @relation(fields: [dishId], references: [id], onDelete: Cascade)
+
+  @@id([commandId, dishId]) // Clave primaria compuesta
+  @@map("command_dishes") // Mapea el nombre del modelo al nombre de la tabla SQL
+}

@@ -1,0 +1,25 @@
+{
+  "name": "adalicious-backend",
+  "version": "1.0.0",
+  "description": "Backend for Adalicious food ordering app",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "prisma:migrate:dev": "npx prisma migrate dev --name init",
+    "prisma:generate": "npx prisma generate",
+    "prisma:studio": "npx prisma studio",
+    "prisma:db:push": "npx prisma db push",
+    "seed": "node db/scripts/seeds/seed.js"
+  },
+  "devDependencies": {
+    "prisma": "^6.9.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.10.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^5.1.0",
+    "next.js": "^1.0.3",
+    "nodemon": "^3.1.10"
+  }
+}
